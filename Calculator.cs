@@ -147,5 +147,12 @@ namespace Calculator
         {
 
         }
+
+        private void ButtonClear_Click(object sender, EventArgs e)
+        {
+            Display.Text = "0";
+            numOne = 0;
+            numTwo = 0;
+        }
     }
 }
