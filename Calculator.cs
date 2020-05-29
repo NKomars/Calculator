@@ -32,6 +32,10 @@ namespace Calculator
             decimalSeparator = Convert.ToChar(Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator);
             this.BackColor = Color.Purple;
             this.Width = widthSmall;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             Display.Font = new Font("Tahoma", 22f);
             Display.Text = "0";
             Display.TabStop = false;
@@ -119,6 +123,13 @@ namespace Calculator
         {
             Button button = (Button)sender;
             numOne = Convert.ToDouble(Display.Text);
+
+            if (button.Text == "Sqrt")
+            {
+                Display.Text = Math.Sqrt(numOne).ToString();
+                return;
+            }
+
             Display.Text = string.Empty;
             operation = button.Text;
         }
