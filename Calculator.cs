@@ -17,6 +17,9 @@ namespace Calculator
         double numOne = 0;
         double numTwo = 0;
         string operation;
+        bool scifiMode = false;
+        const int widthSmall = 385;
+        const int widthLarge = 740;
 
         public Calculator()
         {
@@ -28,6 +31,7 @@ namespace Calculator
         {
             decimalSeparator = Convert.ToChar(Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator);
             this.BackColor = Color.Purple;
+            this.Width = widthSmall;
             Display.Font = new Font("Tahoma", 22f);
             Display.Text = "0";
             Display.TabStop = false;
@@ -139,6 +143,10 @@ namespace Calculator
             {
                 result = numOne / numTwo;
             }
+            else if (operation == "^")
+            {
+                result = Math.Pow(numOne, numTwo);
+            }
 
             Display.Text = result.ToString();
         }
@@ -153,6 +161,19 @@ namespace Calculator
             Display.Text = "0";
             numOne = 0;
             numTwo = 0;
+        }
+
+        private void ButtonSciFi_Click(object sender, EventArgs e)
+        {
+            if (scifiMode)
+            {
+                this.Width = widthSmall;               
+            }
+            else
+            {
+                this.Width = widthLarge;               
+            }
+            scifiMode = !scifiMode;
         }
     }
 }
